@@ -1,0 +1,154 @@
+body{
+    background-color:darkslategray;
+    font-family:Noto Sans TC,Open Sans,sans-serif!important;
+    display: flex;
+    flex-direction: column;
+}
+
+.container{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.container0{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.container1{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.container2{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    margin: 0 auto;
+}
+.container3{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+/* 位置原始顏色 */
+.aisle{
+    background-color: rgb(47, 79, 79);
+    width: 60px;
+    height: 60px;
+}
+.pillar{
+    background-color: rgb(47, 79, 79);
+    height: 60px;
+    width: 100%;
+}
+.seat{
+    font-size: 15px;
+    color:white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:rgb(124, 124, 255);
+    width: 60px;
+    height: 60px;
+    margin: 0px 3px;
+    /* float:left; */
+    
+}
+
+.seat-link {
+    width: 60px;
+    margin: 1px;
+    text-align: center;
+}
+
+.row{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+/* 被點選到的位置 */
+.seat.selected{
+    background-color:rgb(255, 255, 0);
+}
+
+/* 滑鼠點到變色 */
+.seat:hover{
+    color:yellow;
+    background-color: rgb(255, 0, 0);
+    transform: scale(1.1);
+    cursor:pointer;
+}
+
+/*控制位置排列*/
+/* 從右側數來空格1 */
+/* .seat:nth-last-of-type(5){
+    margin-left: 20px;
+} */
+
+/* 從右側數來空格2 */
+/* .seat:nth-last-of-type(4){
+    margin-left: 20px;
+} */
+
+.text{
+    color: aliceblue;
+    font-size: 16px;
+    margin:5px auto;
+    text-align: center;    
+}
+#num{
+    color: salmon;
+    font-size: 18px;
+}
+
+/* 上方選取廠區 */
+/*第一層選單項目*/
+nav{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+nav ul li {
+    color: rgb(255, 255, 255);
+    display: inline-block;
+
+    float: none;
+    white-space: nowrap;
+}
+
+/*最上層選單樣式*/
+nav ul li a {
+    display: inline-block;
+    padding: 0 10px;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    line-height: 30px;
+    text-decoration: none;
+    background-color: rgb(47, 79, 79);
+}
+
+/*整個選單連結滑鼠移上去時的樣式*/
+nav a:hover {
+    color: rgb(255, 255, 255);
+    background-color: #555;
+    transition: all .2s ease;
+}
+
+/*選單滑鼠移上去的樣式變化*/
+nav ul li:hover>ul {
+    transition: all 300ms ease;
+    transform: scale(1,1);
+}

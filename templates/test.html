@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+<script>
+  var mysql = require('mysql');
+
+var pool = mysql.createPool({
+  user: 'root',
+  password: '123456',
+  host: 'localhost',
+  port: '3306',
+  database: 'python_mysql',
+  waitForConnections : true,
+  connectionLimit : 10 //連線數上限
+})
+
+// 取得連線
+pool.getConnection((err, connection) => {
+
+    if (err) {
+      console.log(err)
+    } else {
+      connection.query( 'select * from user', 
+        function(err, rows) {
+          //callback function
+          console.log(rows)
+          // console.log(err)
+          // 釋放連線
+          connection.release();
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/show_style.css') }}">
+    <title>機台使用信息</title>
+
+
+</head>   
+<body> 
+    <div>
+        <!--標題，顯示機台與機身號 -->
+        <h1>{{machineTyp}} No.{{machineNo}} </h1>
+        <!--抓最後一筆的日期與當天比較，並判斷是否今加有更新，有更新就顯示已更新，沒有就今日無更新 -->
+        {% if update_date == "今日無更新" %}
+        <h1><span contenteditable="false">機台使用信息: </span><span style="color: red">{{update_date}}</span></h1>
+        {% else %}
+        <h1><span contenteditable="false">機台使用信息: </span><span style="color: blue">{{update_date}}</span></h1>
+        {% endif %}
+
+        
+        <form action="/do_add_user" method="post">
+            <table class="insert_table">
+                <tr>
+                    <th style="word-break: keep-all;">機型</th>
+                    <td><input type="text" size="20" name="machineTyp" value={{machineTyp}} autocomplete="off"></td>
+                
+                    <th style="word-break: keep-all;">機號</th>
+                    <td><input type="text" size="10" name="machineNo" value={{machineNo}} autocomplete="off"></td>
+                </tr>
+                <tr>
+                    <th style="word-break: keep-all;">處理事項</th>
+                    <td><input type="text" size="20" name="backlog" autocomplete="off"></td>
+                
+                    <th style="word-break: keep-all;">操作者</th>
+                    <td><input type="text" size="10" name="user" autocomplete="off"></td>
+                </tr>
+                <tr>
+                    <th style="word-break: keep-all;">日期</th>
+                    <td><input type="date" size="15" name="date" value={{date}}></td>
+                
+                    <th style="word-break: keep-all;">提交</th>
+                    <td><input type="submit" name="submit" value="提交"></td>
+                </tr>
+            </table>
+
+            <br>
+            <hr>
+        </form>
+        <form action="/do_update_user" method="post">
+            <table class="select_table"> <!-- style="table-layout: fixed;"> -->
+                {% for user in datas1 %}
+                <tr id="aa">
+                    <td style="display: none" name="id1">{{user["id"]}}</td>
+
+                    <th style="word-break: keep-all;">處理事項</th>
+                    <td style="word-break: keep-all;" name="backlog1">{{user["backlog"]}}</td>
+
+                    <th style="word-break: keep-all;">操作者</th>
+                    <td style="word-break: keep-all;" name="user1">{{user["user"]}}</td>
+
+                    <th style="word-break: keep-all;">使用日期</th>
+                    <td style="word-break: keep-all;" name="date1">{{user["date"]}}</td>
+
+                    
+                    <th style="word-break: keep-all;">完成日期</th>
+                    <td id="enddate" name="enddate">{{user["enddate"]}}</td>
+
+                    
+                    <td id="button"><input type="button" onclick=window.location.href="/do_update_user/{{machineTyp}}/{{machineNo}}/{{user['id']}}/{{date}}"; value="提交" /></td>
+                {% endfor %}
+                </tr>
+            </table>
+        </form>
+    </div> 
+    <script type="text/javascript" src="{{url_for('static', filename='js/show_script.js')}}"></script> 
+
+</body>
+</html>

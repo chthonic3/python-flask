@@ -1,0 +1,26 @@
+body{
+    font-family:Noto Sans TC,Open Sans,sans-serif!important;
+}
+
+table{
+    border-collapse:collapse
+}
+
+th,td{
+    border-collapse: collapse;
+    /* border-bottom: 1px solid rgba(29, 29, 29); */
+}
+
+/* 游標過去變色(單數) */
+tr:hover{
+    background-color:#f8f8ae;
+}
+
+/* 游標過去變色(雙數) */
+tr:hover:nth-child(2n){
+    background-color:#f8f8ae;
+}
+
+tr:nth-child(2n) {
+    background-color:#6d6d6d4d;
+}
