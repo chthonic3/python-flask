@@ -21,6 +21,7 @@ tr:hover:nth-child(2n){
     background-color:#f8f8ae;
 }
 
+/*每間隔一行就換色  */
 tr:nth-child(2n) {
     background-color:#6d6d6d4d;
 }
