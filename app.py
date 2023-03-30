@@ -7,8 +7,6 @@ import time
 
 app = Flask(__name__)
 
-#
-
 
 @app.route('/')
 def main():
@@ -34,7 +32,6 @@ def index(machineTyp, machineNo):
         sql1 = 'select * from user where machineTyp="' + machineTyp + \
             '"' + 'and machineNo="'+machineNo+'" ORDER BY date DESC'
         datas1 = db.query_data(sql1)
-
         # 抓取此機台最後一筆日期，與今日比較用
         sql2 = 'SELECT date FROM user where machineTyp="' + machineTyp + \
             '"' + 'and machineNo="'+machineNo+'" ORDER BY date DESC LIMIT 1'
@@ -43,12 +40,10 @@ def index(machineTyp, machineNo):
         for item in datas2:
             for key in item:
                 data_date = item[key]
-
         if data_date != date:
             update_date = '今日無更新'
         else:
             update_date = '已更新'
-
         return render_template('show_add_user.html', machineTyp=machineTyp, machineNo=machineNo, date=date, datas1=datas1, update_date=update_date)
     else:
         return render_template('show_add_user.html', machineTyp=machineTyp, machineNo=machineNo, date=date)
@@ -78,7 +73,6 @@ def do_add_user():
 def do_update_user(machineTyp, machineNo, user_id, date):
     machineTyp = machineTyp
     machineNo = machineNo
-
     sql = f"""
             UPDATE user SET enddate = '{date}' WHERE id = '{user_id}'
         """
