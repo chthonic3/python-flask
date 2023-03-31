@@ -52,7 +52,7 @@ body{
 }
 .seat{
     font-size: 15px;
-    color:white;
+    color:rgb(218, 218, 218);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -81,13 +81,13 @@ body{
 
 /* 被點選到的位置 */
 .seat.selected{
-    background-color:rgb(255, 255, 0);
+    background-color:rgb(125, 125, 125);
 }
 
 /* 滑鼠點到變色 */
 .seat:hover{
-    color:yellow;
-    background-color: rgb(255, 0, 0);
+    color:rgb(255, 255, 255);
+    background-color: rgb(82, 82, 167);
     transform: scale(1.1);
     cursor:pointer;
 }
@@ -109,10 +109,10 @@ body{
     margin:5px auto;
     text-align: center;    
 }
-#num{
+/* #num{
     color: salmon;
     font-size: 18px;
-}
+} */
 
 /* 上方選取廠區 */
 /*第一層選單項目*/
