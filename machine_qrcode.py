@@ -7,15 +7,16 @@ import db
 
 machineTyp = input('請輸入機型: ')
 machineNo = input('請輸入機號: ')
-place1 = input('請輸入機台位置,0:展示場 、 1:一廠 、 2:二廠 、 3:三廠: ')
+place1 = input('請輸入機台場區,0:展示場 、 1:一廠 、 2:二廠 、 3:三廠: ')
+loc1 = input('請輸入機台位置')
 chk_place1 = int(place1[0:4])
 print(chk_place1)
 if chk_place1 <= 4:
     # 建立qr code時，將機台寫入機台表內
-    if machineTyp and machineNo and place1 != "":
+    if machineTyp and machineNo and place1 and loc1 != "":
         sql = f"""
-            insert into mac_loc (machineTyp1 , machineNo1 , place1, enable1)
-            values('{machineTyp}' , '{machineNo}' , '{place1}', '1')
+            insert into mac_loc (machineTyp1 , machineNo1 , place1 , loc1, enable1)
+            values('{machineTyp}' , '{machineNo}' , '{place1}' , '{loc1}' , '1')
         """
         print(sql)
         db.insert_or_update_data(sql)
